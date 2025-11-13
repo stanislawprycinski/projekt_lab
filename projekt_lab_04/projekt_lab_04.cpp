@@ -50,17 +50,17 @@ int check(float temp, char stopnie)
 	if (stopnie == 'K' && temp < 0.0)
 	{
 		cout << "Nie ma takiej temperatury" << endl;
-		return -999.0;
+		return -999;
 	}
 	if (stopnie == 'C' && temp < -273.15)
 	{
 		cout << "Nie ma takiej temperatury" << endl;
-		return -999.0;
+		return -999;
 	}
 	if (stopnie == 'F' && temp < -459.67)
 	{
 		cout << "Nie ma takiej temperatury" << endl;
-		return -999.0;
+		return -999;
 	}
 
 }
@@ -72,11 +72,15 @@ void menu()
 	cout << "4 - przelicz Celsius -> Kelwin" << endl;
 	cout << "5 - przelicz Kelwin -> Celsius" << endl;
 	cout << "6 - przelicz Kelwin -> Fahr" << endl;
-	cout << "7 - zakoncz dzialanie programu" << endl;
+	cout << "7 - pokaz historie" << endl;
+	cout << "8 - zakoncz dzialanie programu" << endl;
 }
 int main()
 {
 	int powrot = 1;
+	double tab[100];
+	int dataCounter = 0;
+	char tab2[100];
 	while (powrot == 1)
 	{
 		system("cls");
@@ -84,10 +88,38 @@ int main()
 		char stopnie;
 		char e;
 		int a;
+		int x = 1;
 		float temp;
 		float temp2;
-		cout << "Podaj cyfre od 1 do 7: " << endl;
+		cout << "Podaj cyfre od 1 do 8: " << endl;
 		cin >> a;
+		switch (a)
+		{
+		case 1:
+			tab2[dataCounter] = 'F';
+			tab2[dataCounter + 1] = 'C';
+			break;
+		case 2:
+			tab2[dataCounter] = 'F';
+			tab2[dataCounter + 1] = 'K';
+			break;
+		case 3:
+			tab2[dataCounter] = 'C';
+			tab2[dataCounter + 1] = 'F';
+			break;
+		case 4:
+			tab2[dataCounter] = 'C';
+			tab2[dataCounter + 1] = 'K';
+			break;
+		case 5:
+			tab2[dataCounter] = 'K';
+			tab2[dataCounter + 1] = 'C';
+			break;
+		case 6:
+			tab2[dataCounter] = 'K';
+			tab2[dataCounter + 1] = 'F';
+			break;
+		}
 		switch (a)
 		{
 		case 1:
@@ -111,6 +143,9 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
+				tab[dataCounter] = temp;
+				tab[dataCounter + 1] = temp2;
+				dataCounter += 2;
 				continue;
 			}
 		case 2:
@@ -134,6 +169,9 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
+				tab[dataCounter] = temp;
+				tab[dataCounter + 1] = temp2;
+				dataCounter += 2;
 				continue;
 			}
 		case 3:
@@ -157,6 +195,9 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
+				tab[dataCounter] = temp;
+				tab[dataCounter + 1] = temp2;
+				dataCounter += 2;
 				continue;
 			}
 		case 4:
@@ -180,6 +221,9 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
+				tab[dataCounter] = temp;
+				tab[dataCounter + 1] = temp2;
+				dataCounter += 2;
 				continue;
 			}
 		case 5:
@@ -203,6 +247,9 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
+				tab[dataCounter] = temp;
+				tab[dataCounter + 1] = temp2;
+				dataCounter += 2;
 				continue;
 			}
 		case 6:
@@ -226,8 +273,19 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
+				tab[dataCounter] = temp;
+				tab[dataCounter + 1] = temp2;
+				dataCounter += 2;
 				continue;
 			}
+		case 7:
+			cout << "HISTORIA: " << endl;
+			for (int i = 0; i < dataCounter; i = i + 2)
+			{
+				cout << "<" << x << ">" << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+				x = x + 1;
+			}
+			return 0;
 		default:
 			return 0;
 		}
