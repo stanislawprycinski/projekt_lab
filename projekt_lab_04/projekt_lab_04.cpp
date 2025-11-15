@@ -1,13 +1,7 @@
 ﻿#include <iostream>
 #include <stdlib.h>
+#include "headerFile.h";
 using namespace std;
-float FtoC(float temp);
-float FtoK(float temp);
-float CtoF(float temp);
-float CtoK(float temp);
-float KtoC(float temp);
-float KtoF(float temp);
-int check(float temp, char stopnie);
 
 float FtoC(float temp)
 {
@@ -282,7 +276,7 @@ int main()
 			cout << "HISTORIA: " << endl;
 			for (int i = 0; i < dataCounter; i = i + 2)
 			{
-				cout << "<" << x << ">" << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+				cout << "<" << x << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
 				x = x + 1;
 			}
 			return 0;
