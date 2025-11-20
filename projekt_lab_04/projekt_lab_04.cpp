@@ -56,7 +56,6 @@ int check(float temp, char stopnie)
 		cout << "Nie ma takiej temperatury" << endl;
 		return -999;
 	}
-
 }
 void menu()
 {
@@ -67,7 +66,16 @@ void menu()
 	cout << "5 - przelicz Kelwin -> Celsius" << endl;
 	cout << "6 - przelicz Kelwin -> Fahr" << endl;
 	cout << "7 - pokaz historie" << endl;
-	cout << "8 - zakoncz dzialanie programu" << endl;
+	cout << "-1 - zakoncz dzialanie programu" << endl;
+	cout << "Podaj cyfre od 1 do 8: " << endl;
+}
+void menu2()
+{
+	cout << "1 - tylko C --> inne" << endl;
+	cout << "2 - tylko F --> inne" << endl;
+	cout << "3 - tylko K --> inne" << endl;
+	cout << "4 - cala historia" << endl; 
+	cout << "podaj cyfre od 1 do 3" << endl;
 }
 int main()
 {
@@ -85,7 +93,6 @@ int main()
 		int x = 1;
 		float temp;
 		float temp2;
-		cout << "Podaj cyfre od 1 do 8: " << endl;
 		cin >> a;
 		switch (a)
 		{
@@ -137,9 +144,18 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
-				tab[dataCounter] = temp;
-				tab[dataCounter + 1] = temp2;
-				dataCounter += 2;
+				if (dataCounter + 1 >= 100)
+				{
+					cout << "WARNING!!!" << endl;
+					cout << "nowe przeliczenie nie zostalo dodane do historii" << endl;
+					cout << "brak miejsca" << endl;
+				}
+				else
+				{
+					tab[dataCounter] = temp;
+					tab[dataCounter + 1] = temp2;
+					dataCounter += 2;
+				}
 				continue;
 			}
 		case 2:
@@ -163,9 +179,18 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
-				tab[dataCounter] = temp;
-				tab[dataCounter + 1] = temp2;
-				dataCounter += 2;
+				if (dataCounter + 1 >= 100)
+				{
+					cout << "WARNING!!!" << endl;
+					cout << "nowe przeliczenie nie zostalo dodane do historii" << endl;
+					cout << "brak miejsca" << endl;
+				}
+				else
+				{
+					tab[dataCounter] = temp;
+					tab[dataCounter + 1] = temp2;
+					dataCounter += 2;
+				}
 				continue;
 			}
 		case 3:
@@ -189,9 +214,18 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
-				tab[dataCounter] = temp;
-				tab[dataCounter + 1] = temp2;
-				dataCounter += 2;
+				if (dataCounter + 1 >= 100)
+				{
+					cout << "WARNING!!!" << endl;
+					cout << "nowe przeliczenie nie zostalo dodane do historii" << endl;
+					cout << "brak miejsca" << endl;
+				}
+				else
+				{
+					tab[dataCounter] = temp;
+					tab[dataCounter + 1] = temp2;
+					dataCounter += 2;
+				}
 				continue;
 			}
 		case 4:
@@ -215,9 +249,18 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
-				tab[dataCounter] = temp;
-				tab[dataCounter + 1] = temp2;
-				dataCounter += 2;
+				if (dataCounter + 1 >= 100)
+				{
+					cout << "WARNING!!!" << endl;
+					cout << "nowe przeliczenie nie zostalo dodane do historii" << endl;
+					cout << "brak miejsca" << endl;
+				}
+				else
+				{
+					tab[dataCounter] = temp;
+					tab[dataCounter + 1] = temp2;
+					dataCounter += 2;
+				}
 				continue;
 			}
 		case 5:
@@ -241,9 +284,18 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
-				tab[dataCounter] = temp;
-				tab[dataCounter + 1] = temp2;
-				dataCounter += 2;
+				if (dataCounter + 1 >= 100)
+				{
+					cout << "WARNING!!!" << endl;
+					cout << "nowe przeliczenie nie zostalo dodane do historii" << endl;
+					cout << "brak miejsca" << endl;
+				}
+				else
+				{
+					tab[dataCounter] = temp;
+					tab[dataCounter + 1] = temp2;
+					dataCounter += 2;
+				}
 				continue;
 			}
 		case 6:
@@ -267,24 +319,100 @@ int main()
 				cin >> e;
 				if (e == 'e')
 					powrot = 1;
-				tab[dataCounter] = temp;
-				tab[dataCounter + 1] = temp2;
-				dataCounter += 2;
+				if (dataCounter + 1 >= 100)
+				{
+					cout << "WARNING!!!" << endl;
+					cout << "nowe przeliczenie nie zostalo dodane do historii" << endl;
+					cout << "brak miejsca" << endl;
+				}
+				else
+				{
+					tab[dataCounter] = temp;
+					tab[dataCounter + 1] = temp2;
+					dataCounter += 2;
+				}
 				continue;
 			}
 		case 7:
-			cout << "HISTORIA: " << endl;
-			for (int i = 0; i < dataCounter; i = i + 2)
-			{
-				cout << "<" << x << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
-				x = x + 1;
-			}
-			return 0;
-		default:
+				int b;
+				menu2();
+				cin >> b;
+				switch (b)
+				{
+					case 1:
+					{
+						int x = 1;
+						bool znaleziono = false;
+						cout << "HISTORIA: " << endl;
+						for (int i = 0; i < dataCounter; i = i + 2)
+						{
+							if (tab2[i] == 'C')
+							{
+								cout << "<" << x << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+								x = x + 1;
+								znaleziono = true;
+							}
+						}
+						if (znaleziono == false)
+						{
+							cout << "brak danych" << endl;
+						}
+						break;
+					}
+					case 2:
+					{
+						int x = 1;
+						bool znaleziono = false;
+						cout << "HISTORIA: " << endl;
+						for (int i = 0; i < dataCounter; i = i + 2)
+						{
+							if (tab2[i] == 'F')
+							{
+								cout << "<" << x << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+								x = x + 1;
+								znaleziono = true;
+							}
+						}
+						if (znaleziono == false)
+						{
+							cout << "brak danych" << endl;
+						}
+						break;
+					}
+					case 3:
+					{
+						int x = 1;
+						bool znaleziono = false;
+						cout << "HISTORIA: " << endl;
+						for (int i = 0; i < dataCounter; i = i + 2)
+						{
+							if (tab2[i] == 'K')
+							{
+								cout << "<" << x << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+								x = x + 1;
+								znaleziono = true;
+							}
+						}
+						if (znaleziono == false)
+						{
+							cout << "brak danych" << endl;
+						}
+						break;
+					}
+					case 4:
+						int x = 1;
+						cout << "HISTORIA: " << endl;
+						for (int i = 0; i < dataCounter; i = i + 2)
+						{
+							cout << "<" << x << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+							x = x + 1;
+						}
+						break;
+				}
+		case -1:
 			return 0;
 		}
+
+
 	}
 }
-
-
-

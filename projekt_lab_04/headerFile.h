@@ -5,3 +5,5 @@ float CtoK(float temp);
 float KtoC(float temp);
 float KtoF(float temp);
 int check(float temp, char stopnie);
+void menu();
+void menu2();
