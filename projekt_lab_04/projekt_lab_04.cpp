@@ -66,6 +66,7 @@ void menu()
 	cout << "5 - przelicz Kelwin -> Celsius" << endl;
 	cout << "6 - przelicz Kelwin -> Fahr" << endl;
 	cout << "7 - pokaz historie" << endl;
+	cout << "8 - usun z historii" << endl;
 	cout << "-1 - zakoncz dzialanie programu" << endl;
 	cout << "Podaj cyfre od 1 do 8: " << endl;
 }
@@ -77,12 +78,12 @@ void menu2()
 	cout << "4 - cala historia" << endl; 
 	cout << "podaj cyfre od 1 do 3" << endl;
 }
+int dataCounter = 0;
+double tab[100];
+char tab2[100];
 int main()
 {
 	int powrot = 1;
-	double tab[100];
-	int dataCounter = 0;
-	char tab2[100];
 	while (powrot == 1)
 	{
 		system("cls");
@@ -409,6 +410,47 @@ int main()
 						}
 						break;
 				}
+				cout << "Nacisnij e" << endl;
+				cin >> e;
+				if (e == 'e')
+					powrot = 1;
+				break;
+		case 8:
+		{
+			system("cls");
+			cout << "HISTORIA: " << endl;
+			int linia = 0;
+			for (int i = 0; i < dataCounter; i = i + 2)
+			{
+				linia++;
+				cout << "<" << linia << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+			}
+			cout << "Ktora linie usunac?" << endl;
+			int entityToRemove;
+			cin >> entityToRemove;
+			if (entityToRemove < 1 || entityToRemove > linia)
+			{
+				cout << "Nie ma takiej linii" << endl;
+				cout << "Nacisnij e" << endl;
+				cin >> e;
+				if (e == 'e')
+					powrot = 1;
+				break;
+			}
+			int indeks1 = entityToRemove * 2 - 2;
+			int indeks2 = entityToRemove * 2 - 1;
+			for (int i = indeks1; i < dataCounter * 2 - 2; i++)
+			{
+				tab[i] = tab[i + 2];
+				tab2[i] = tab2[i + 2];
+			}
+			dataCounter--;
+			cout << "Nacisnij e" << endl;
+			cin >> e;
+			if (e == 'e')
+				powrot = 1;
+			break;	
+		}
 		case -1:
 			return 0;
 		}
