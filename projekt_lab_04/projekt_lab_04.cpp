@@ -67,6 +67,7 @@ void menu()
 	cout << "6 - przelicz Kelwin -> Fahr" << endl;
 	cout << "7 - pokaz historie" << endl;
 	cout << "8 - usun z historii" << endl;
+	cout << "9 - modyfikuj wpis z historii" << endl;
 	cout << "-1 - zakoncz dzialanie programu" << endl;
 	cout << "Podaj cyfre od 1 do 8: " << endl;
 }
@@ -453,6 +454,81 @@ int main()
 		}
 		case -1:
 			return 0;
+		case 9:
+		{
+			if (dataCounter == 0)
+			{
+				cout << "brak danych w historii" << endl;
+				cout << "Nacisnij e" << endl;
+				cin >> e;
+				if (e == 'e')
+					powrot = 1;
+				break;
+			}
+			cout << "HISTORIA: " << endl;
+			int linia = 0;
+			for (int i = 0; i < dataCounter; i = i + 2)
+			{
+				linia++;
+				cout << "<" << linia << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
+			}
+			cout << "Ktora linie chcesz zmodyfikowac?" << endl;
+			int wybor;
+			cin >> wybor;
+			if (wybor < 1 || wybor > linia)
+			{
+				cout << "Nie ma takiej linii" << endl;
+				cout << "Nacisnij e" << endl;
+				cin >> e;
+				if (e == 'e')
+					powrot = 1;
+				break;
+			}
+			float temp;
+			float temp2;
+			char stopnie;
+			char stopnie2;
+			cout << "Podaj nowa temperature: ";
+			cin >> temp;
+			cout << "Podaj jej skale (C/F/K): ";
+			cin >> stopnie;
+			check(temp, stopnie);
+			if (check(temp, stopnie) == -999)
+			{
+				cout << "Nacisnij e" << endl;
+				cin >> e;
+				if (e == 'e')
+					powrot = 1;
+				break;
+			}
+			cout << "Na jaka skale przeliczyc? (C/F/K): ";
+			cin >> stopnie2;
+			if (stopnie == 'C' && stopnie2 == 'F')
+				temp2 = CtoF(temp);
+			else if (stopnie == 'C' && stopnie2 == 'K')
+				temp2 = CtoK(temp);
+			else if (stopnie == 'F' && stopnie2 == 'C')
+				temp2 = FtoC(temp);
+			else if (stopnie == 'F' && stopnie2 == 'K')
+				temp2 = FtoK(temp);
+			else if (stopnie == 'K' && stopnie2 == 'C')
+				temp2 = KtoC(temp);
+			else if (stopnie == 'K' && stopnie2 == 'F')
+				temp2 = KtoF(temp);
+			else
+				temp2 = temp;
+			int indeks = (wybor - 1) * 2;
+			tab[indeks] = temp;
+			tab2[indeks] = stopnie;
+			tab[indeks + 1] = temp2;
+			tab2[indeks + 1] = stopnie2;
+			cout << "Wpis zostal zmodyfikowany" << endl;
+			cout << "Nacisnij e" << endl;
+			cin >> e;
+			if (e == 'e')
+				powrot = 1;
+			break;
+		}
 		}
 
 
