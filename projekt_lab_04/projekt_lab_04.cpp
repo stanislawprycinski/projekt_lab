@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <stdlib.h>
 #include "headerFile.h";
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 float FtoC(float temp)
@@ -68,6 +70,7 @@ void menu()
 	cout << "7 - pokaz historie" << endl;
 	cout << "8 - usun z historii" << endl;
 	cout << "9 - modyfikuj wpis z historii" << endl;
+	cout << "10 - wypelnij losowo historie" << endl;
 	cout << "-1 - zakoncz dzialanie programu" << endl;
 	cout << "Podaj cyfre od 1 do 8: " << endl;
 }
@@ -523,6 +526,97 @@ int main()
 			tab[indeks + 1] = temp2;
 			tab2[indeks + 1] = stopnie2;
 			cout << "Wpis zostal zmodyfikowany" << endl;
+			cout << "Nacisnij e" << endl;
+			cin >> e;
+			if (e == 'e')
+				powrot = 1;
+			break;
+		}
+		case 10:
+		{
+			int ile;
+			cout << "Ile losowych wpisow wygenerowac?" << endl;
+			cin >> ile;
+			int wolneMiejsca = (100 - dataCounter) / 2;
+			if (ile > wolneMiejsca)
+			{
+				cout << "Brak miejsca na tyle wpisow" << endl;
+				cout << "Mozna dodac maksymalnie: " << wolneMiejsca << endl;
+				cout << "Czy dodac " << wolneMiejsca << " wpisów? (t / n)" << endl;
+				char decyzja;
+				cin >> decyzja;
+				if (decyzja == 't')
+				{
+					ile = wolneMiejsca;
+				}
+				else
+				{
+					break;
+				}
+			}
+			srand(time(NULL));
+			for (int i = 0; i < ile; i++)
+			{
+				char stopnie;
+				char stopnie2;
+				int losowaTempInt;
+				double temp;
+				double temp2;
+				int los = rand() % 3;
+				if (los == 0)
+					stopnie = 'C';
+				else if (los == 1)
+					stopnie = 'F';
+				else if (los == 2)
+					stopnie = 'K';
+				if (stopnie == 'C')
+					losowaTempInt = rand() % 1001 - 273;
+				else if (stopnie == 'F')
+					losowaTempInt = rand() % 1001 - 460;
+				else if (stopnie == 'K')
+					losowaTempInt = rand() % 1001;
+				temp = (double)losowaTempInt;
+				int los2 = rand() % 2;
+				if (stopnie == 'C')
+				{
+					if (los2 == 0)
+						stopnie2 = 'F';
+					else
+						stopnie2 = 'K';
+				}
+				else if (stopnie == 'F')
+				{
+					if (los2 == 0)
+						stopnie2 = 'C';
+					else
+						stopnie2 = 'K';
+				}
+				else
+				{
+					if (los2 == 0)
+						stopnie2 = 'C';
+					else
+						stopnie2 = 'F';
+				}
+				if (stopnie == 'C' && stopnie2 == 'F')
+					temp2 = CtoF(temp);
+				else if (stopnie == 'C' && stopnie2 == 'K')
+					temp2 = CtoK(temp);
+				else if (stopnie == 'F' && stopnie2 == 'C')
+					temp2 = FtoC(temp);
+				else if (stopnie == 'F' && stopnie2 == 'K')
+					temp2 = FtoK(temp);
+				else if (stopnie == 'K' && stopnie2 == 'C')
+					temp2 = KtoC(temp);
+				else if (stopnie == 'K' && stopnie2 == 'F')
+					temp2 = KtoF(temp);
+				tab[dataCounter] = temp;
+				tab2[dataCounter] = stopnie;
+				tab[dataCounter + 1] = temp2;
+				tab2[dataCounter + 1] = stopnie2;
+				dataCounter = dataCounter + 2;
+			}
+			cout << "Losowe wpisy zostaly dodane" << endl;
 			cout << "Nacisnij e" << endl;
 			cin >> e;
 			if (e == 'e')
