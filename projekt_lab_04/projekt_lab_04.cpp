@@ -3,6 +3,7 @@
 #include "headerFile.h";
 #include <cstdlib>
 #include <ctime>
+#include <string>
 using namespace std;
 
 float FtoC(float temp)
@@ -57,6 +58,46 @@ int check(float temp, char stopnie)
 	{
 		cout << "Nie ma takiej temperatury" << endl;
 		return -999;
+	}
+	return 0;
+}
+bool zmienNaDouble(string tekst, double& wynik)
+{
+	bool kropka = false;
+	for (int i = 0; i < tekst.length(); i++)
+	{
+		if (tekst[i] == '.')
+		{
+			if (kropka == true)
+				return false; 
+			kropka = true;
+		}
+		else if (tekst[i] == '-' && i == 0)
+		{
+		}
+		else if (tekst[i] < '0' || tekst[i] > '9')
+		{
+			return false; 
+		}
+	}
+	wynik = atof(tekst.c_str());
+	return true;
+}
+double wczytajDouble()
+{
+	string tekst;
+	double liczba;
+	while (true)
+	{
+		cin >> tekst;
+		if (zmienNaDouble(tekst, liczba))
+		{
+			return liczba;
+		}
+		else
+		{
+			cout << "To nie jest poprawna liczba" << endl;
+		}
 	}
 }
 void menu()
@@ -130,7 +171,7 @@ int main()
 		{
 		case 1:
 			cout << "Podaj temperature, ktora chcesz przeliczyc: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			stopnie = 'F';
 			temp2 = FtoC(temp);
 			check(temp, stopnie);
@@ -165,7 +206,7 @@ int main()
 			}
 		case 2:
 			cout << "Podaj temperature, ktora chcesz przeliczyc: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			stopnie = 'F';
 			temp2 = FtoK(temp);
 			check(temp, stopnie);
@@ -200,7 +241,7 @@ int main()
 			}
 		case 3:
 			cout << "Podaj temperature, ktora chcesz przeliczyc: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			stopnie = 'C';
 			temp2 = CtoF(temp);
 			check(temp, stopnie);
@@ -235,7 +276,7 @@ int main()
 			}
 		case 4:
 			cout << "Podaj temperature, ktora chcesz przeliczyc: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			stopnie = 'C';
 			temp2 = CtoK(temp);
 			check(temp, stopnie);
@@ -270,7 +311,7 @@ int main()
 			}
 		case 5:
 			cout << "Podaj temperature, ktora chcesz przeliczyc: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			stopnie = 'K';
 			temp2 = KtoC(temp);
 			check(temp, stopnie);
@@ -305,7 +346,7 @@ int main()
 			}
 		case 6:
 			cout << "Podaj temperature, ktora chcesz przeliczyc: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			stopnie = 'K';
 			temp2 = KtoF(temp);
 			check(temp, stopnie);
@@ -421,7 +462,6 @@ int main()
 				break;
 		case 8:
 		{
-			system("cls");
 			cout << "HISTORIA: " << endl;
 			int linia = 0;
 			for (int i = 0; i < dataCounter; i = i + 2)
@@ -430,9 +470,9 @@ int main()
 				cout << "<" << linia << ">" << " " << tab[i] << tab2[i] << " " << "=" << " " << tab[i + 1] << tab2[i + 1] << endl;
 			}
 			cout << "Ktora linie usunac?" << endl;
-			int entityToRemove;
-			cin >> entityToRemove;
-			if (entityToRemove < 1 || entityToRemove > linia)
+			int Remove;
+			cin >> Remove;
+			if (Remove < 1 || Remove > linia)
 			{
 				cout << "Nie ma takiej linii" << endl;
 				cout << "Nacisnij e" << endl;
@@ -441,8 +481,8 @@ int main()
 					powrot = 1;
 				break;
 			}
-			int indeks1 = entityToRemove * 2 - 2;
-			int indeks2 = entityToRemove * 2 - 1;
+			int indeks1 = Remove * 2 - 2;
+			int indeks2 = Remove * 2 - 1;
 			for (int i = indeks1; i < dataCounter * 2 - 2; i++)
 			{
 				tab[i] = tab[i + 2];
@@ -492,7 +532,7 @@ int main()
 			char stopnie;
 			char stopnie2;
 			cout << "Podaj nowa temperature: ";
-			cin >> temp;
+			temp = wczytajDouble();
 			cout << "Podaj jej skale (C/F/K): ";
 			cin >> stopnie;
 			check(temp, stopnie);
