@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <stdlib.h>
-#include "headerFile.h";
+#include "headerFile.h"
 #include <cstdlib>
 #include <ctime>
 #include <string>
@@ -177,19 +177,19 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999.0)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				continue;
 			}
 			else
 			{
 				cout << temp << " --> " << temp2 << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				if (dataCounter + 1 >= 100)
 				{
 					cout << "WARNING!!!" << endl;
@@ -212,19 +212,19 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999.0)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				continue;
 			}
 			else
 			{
 				cout << temp << " --> " << temp2 << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				if (dataCounter + 1 >= 100)
 				{
 					cout << "WARNING!!!" << endl;
@@ -247,19 +247,19 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999.0)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				continue;
 			}
 			else
 			{
 				cout << temp << " --> " << temp2 << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				if (dataCounter + 1 >= 100)
 				{
 					cout << "WARNING!!!" << endl;
@@ -282,19 +282,19 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999.0)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				continue;
 			}
 			else
 			{
 				cout << temp << " --> " << temp2 << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				if (dataCounter + 1 >= 100)
 				{
 					cout << "WARNING!!!" << endl;
@@ -317,19 +317,19 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999.0)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				continue;
 			}
 			else
 			{
 				cout << temp << " --> " << temp2 << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				if (dataCounter + 1 >= 100)
 				{
 					cout << "WARNING!!!" << endl;
@@ -352,19 +352,19 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999.0)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				continue;
 			}
 			else
 			{
 				cout << temp << " --> " << temp2 << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				if (dataCounter + 1 >= 100)
 				{
 					cout << "WARNING!!!" << endl;
@@ -455,10 +455,10 @@ int main()
 						}
 						break;
 				}
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				break;
 		case 8:
 		{
@@ -475,10 +475,10 @@ int main()
 			if (Remove < 1 || Remove > linia)
 			{
 				cout << "Nie ma takiej linii" << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				break;
 			}
 			int indeks1 = Remove * 2 - 2;
@@ -489,10 +489,10 @@ int main()
 				tab2[i] = tab2[i + 2];
 			}
 			dataCounter--;
-			cout << "Nacisnij e" << endl;
-			cin >> e;
-			if (e == 'e')
-				powrot = 1;
+			cout << "Nacisnij enter" << endl;
+			cin.ignore();
+			cin.get();
+			powrot = 1;
 			break;	
 		}
 		case -1:
@@ -502,10 +502,10 @@ int main()
 			if (dataCounter == 0)
 			{
 				cout << "brak danych w historii" << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				break;
 			}
 			cout << "HISTORIA: " << endl;
@@ -521,10 +521,10 @@ int main()
 			if (wybor < 1 || wybor > linia)
 			{
 				cout << "Nie ma takiej linii" << endl;
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				break;
 			}
 			float temp;
@@ -538,10 +538,10 @@ int main()
 			check(temp, stopnie);
 			if (check(temp, stopnie) == -999)
 			{
-				cout << "Nacisnij e" << endl;
-				cin >> e;
-				if (e == 'e')
-					powrot = 1;
+				cout << "Nacisnij enter" << endl;
+				cin.ignore();
+				cin.get();
+				powrot = 1;
 				break;
 			}
 			cout << "Na jaka skale przeliczyc? (C/F/K): ";
@@ -566,10 +566,10 @@ int main()
 			tab[indeks + 1] = temp2;
 			tab2[indeks + 1] = stopnie2;
 			cout << "Wpis zostal zmodyfikowany" << endl;
-			cout << "Nacisnij e" << endl;
-			cin >> e;
-			if (e == 'e')
-				powrot = 1;
+			cout << "Nacisnij enter" << endl;
+			cin.ignore();
+			cin.get();
+			powrot = 1;
 			break;
 		}
 		case 10:
@@ -582,7 +582,7 @@ int main()
 			{
 				cout << "Brak miejsca na tyle wpisow" << endl;
 				cout << "Mozna dodac maksymalnie: " << wolneMiejsca << endl;
-				cout << "Czy dodac " << wolneMiejsca << " wpisów? (t / n)" << endl;
+				cout << "Czy dodac " << wolneMiejsca << " wpisow? (t / n)" << endl;
 				char decyzja;
 				cin >> decyzja;
 				if (decyzja == 't')
@@ -657,10 +657,10 @@ int main()
 				dataCounter = dataCounter + 2;
 			}
 			cout << "Losowe wpisy zostaly dodane" << endl;
-			cout << "Nacisnij e" << endl;
-			cin >> e;
-			if (e == 'e')
-				powrot = 1;
+			cout << "Nacisnij enter" << endl;
+			cin.ignore();
+			cin.get();
+			powrot = 1;
 			break;
 		}
 		}
