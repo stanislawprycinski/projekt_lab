@@ -7,3 +7,5 @@ float KtoF(float temp);
 int check(float temp, char stopnie);
 void menu();
 void menu2();
+bool zmienNaDouble(string tekst, double& wynik);
+double wczytajDouble();
